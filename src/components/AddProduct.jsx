@@ -1,33 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button,Modal,ModalBody,Input,Select,RadioGroup,Radio } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 
-const AddProduct = () => {
-  // TODO: Remove below const and instead import them from chakra
-  const Button = () => <div />;
-  const Modal = () => <div />;
-  const ModalBody = () => <div />;
-  const Input = () => <div />;
-  const Select = () => <div />;
-  const RadioGroup = () => <div />;
-  const Radio = () => <div />;
+const AddProduct = ({addproduct}) => {
+ 
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [data,setData]=useState({
+    imageSrc: "https://picsum.photos/seed/picsum4/422/262",
+    
+  })
+ 
+  const handlesubmitt=()=>{
+    addproduct(data)
+    onClose()
+  }
 
   return (
     <>
-      <Button my={4} data-cy="add-product-button"></Button>
-      <Modal>
-        <ModalBody pb={6}>
-          <Input data-cy="add-product-title" />
-          <Select data-cy="add-product-category">
-            <option data-cy="add-product-category-shirt"></option>
-            <option data-cy="add-product-category-pant"></option>
-            <option data-cy="add-product-category-jeans"></option>
+      <Button size="lg" my={24} data-cy="add-product-button" onClick={onOpen} >Add Product</Button>
+      <Modal
+      isCentered={true}
+      size={"5xl"} 
+      isOpen={isOpen}
+      onClose={onClose}>
+        <ModalBody  pb={6}>
+          <Input onChange={(e)=>setData({...data,title:e.target.value})} data-cy="add-product-title" />
+          <Select onChange={(e)=>setData({...data,category:e.target.value})} data-cy="add-product-category">
+            <option data-cy="add-product-category-shirt">shirt</option>
+            <option data-cy="add-product-category-pant">pant</option>
+            <option data-cy="add-product-category-jeans">jeans</option>
           </Select>
-          <RadioGroup data-cy="add-product-gender">
-            <Radio data-cy="add-product-gender-male"></Radio>
-            <Radio data-cy="add-product-gender-female"></Radio>
-            <Radio data-cy="add-product-gender-unisex"></Radio>
+          <RadioGroup onChange={(value)=>setData({...data,gender:value})}  data-cy="add-product-gender">
+            <Radio value={"male"} data-cy="add-product-gender-male">male</Radio>
+            <Radio value={"female"} data-cy="add-product-gender-female">female</Radio>
+            <Radio value={"unisex"} data-cy="add-product-gender-unisex">unisex</Radio>
           </RadioGroup>
-          <Input data-cy="add-product-price" />
-          <Button data-cy="add-product-submit-button"></Button>
+          <Input  onChange={(e)=>setData({...data,price:e.target.value})} data-cy="add-product-price" />
+          <Button onClick={handlesubmitt} data-cy="add-product-submit-button">add</Button>
         </ModalBody>
       </Modal>
     </>

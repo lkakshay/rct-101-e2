@@ -70,6 +70,29 @@
       "price": "300",
       "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
       "id": 9
+    },
+    {
+      "imageSrc": "https://picsum.photos/seed/picsum4/422/262",
+      "title": "newshirt",
+      "gender": "unisex",
+      "price": "234",
+      "id": 10
+    },
+    {
+      "imageSrc": "https://picsum.photos/seed/picsum4/422/262",
+      "title": "sdfsf",
+      "category": "jeans",
+      "gender": "male",
+      "price": "3432",
+      "id": 11
+    },
+    {
+      "imageSrc": "https://picsum.photos/seed/picsum4/422/262",
+      "title": "dfs",
+      "category": "pant",
+      "gender": "unisex",
+      "price": "435454",
+      "id": 12
     }
   ]
 }
